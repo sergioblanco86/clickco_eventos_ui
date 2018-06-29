@@ -1,0 +1,22 @@
+<img src="assets/alcaldia-capital.png" class="barranquilla-logo" alt="Alcaldia logos">
+<mat-card class="login-card">
+  <div class="header">
+    <h2>Eventos</h2>
+    <h4>Inicio de sesión</h4>
+    <img src="assets/separator.png" alt="Separator">
+  </div>
+  <mat-card-content>
+    <div class="login-form" [formGroup]="userLogin">
+      <mat-form-field>
+        <mat-icon matPrefix>person</mat-icon>
+        <input matInput placeholder="Nombre de usuario" formControlName="username">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-icon matPrefix>lock</mat-icon>
+        <input matInput type="password" placeholder="Contraseña" formControlName="password">
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" class="login-btn" [disabled]="!userLogin.valid" (click)="login(userLogin.value)">Ingresar</button>
+  </mat-card-content>
+</mat-card>
