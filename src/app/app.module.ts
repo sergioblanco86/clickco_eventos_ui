@@ -14,7 +14,8 @@ import {
   MatButtonModule,
   MatCardModule,
   MatFormFieldModule,
-  MatIconModule, MatInputModule,
+  MatIconModule,
+  MatInputModule,
   MatListModule,
   MatSidenavModule,
   MatToolbarModule
@@ -28,9 +29,9 @@ const appRoutes: Routes = [
     component: MainComponent,
     children: [
       {path: '', redirectTo: 'calendar', pathMatch: 'full'},
-      {path: 'calendar', component: CalendarComponent},
-      {path: 'profiles', component: ProfileComponent},
-      {path: 'users', component: UsersComponent}
+      {path: 'calendar', component: CalendarComponent, data: {title: 'Calendario'}},
+      {path: 'profiles', component: ProfileComponent, data: {title: 'Perfiles'}},
+      {path: 'users', component: UsersComponent, data: {title: 'Usuarios'}}
     ]
   },
   {path: '', redirectTo: '/login', pathMatch: 'full'}

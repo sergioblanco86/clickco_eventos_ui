@@ -6,8 +6,10 @@
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="!(isHandset$ | async)">
-    <mat-toolbar color="primary">Menu</mat-toolbar>
-    <mat-nav-list>
+    <img class="sidebar-logo" src="assets/sidebar-logo.png" alt="Barranquilla">
+    <h2 class="sidenav-title">Eventos</h2>
+    <img class="divider" src="assets/separator.png" alt="Divider">
+    <mat-nav-list class="events-links">
       <a mat-list-item routerLink="calendar" routerLinkActive="active">
         <mat-icon mat-list-icon>date_range</mat-icon>
         Calendario</a>
@@ -29,7 +31,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Application Title</span>
+      <span>{{title}}</span>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
