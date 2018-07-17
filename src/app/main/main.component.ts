@@ -1,9 +1,10 @@
-import {ChangeDetectionStrategy, Component, OnDestroy} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Observable, Subscription} from 'rxjs';
 import {filter, map, mergeMap} from 'rxjs/operators';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'cce-main',
@@ -11,9 +12,10 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
   styleUrls: ['./main.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MainComponent implements OnDestroy {
+export class MainComponent implements OnInit, OnDestroy {
 
   title = '';
+  loggedInUser: any;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -22,7 +24,7 @@ export class MainComponent implements OnDestroy {
 
   subs: Subscription[] = [];
 
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private breakpointObserver: BreakpointObserver, private router: Router, private activatedRoute: ActivatedRoute, private authService: AuthService) {
     this.subs.push(
       this.router.events.pipe(
         filter((event) => event instanceof NavigationEnd),
@@ -41,6 +43,14 @@ export class MainComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.subs.forEach(sub => sub.unsubscribe());
+  }
+
+  ngOnInit(): void {
+    this.loggedInUser = this.authService.getUser();
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }

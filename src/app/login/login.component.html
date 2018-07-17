@@ -9,14 +9,15 @@
     <div class="login-form" [formGroup]="userLogin">
       <mat-form-field>
         <mat-icon matPrefix>person</mat-icon>
-        <input matInput placeholder="Nombre de usuario" formControlName="username">
+        <input matInput placeholder="Nombre de usuario" formControlName="email">
       </mat-form-field>
 
       <mat-form-field>
         <mat-icon matPrefix>lock</mat-icon>
-        <input matInput type="password" placeholder="Contraseña" formControlName="password">
+        <input matInput type="password" placeholder="Contraseña" formControlName="contrasena">
       </mat-form-field>
     </div>
-    <button mat-raised-button color="primary" class="login-btn" [disabled]="!userLogin.valid" (click)="login(userLogin.value)">Ingresar</button>
+    <button mat-raised-button color="primary" class="login-btn" [disabled]="!userLogin.valid" (click)="login(userLogin.value)" *ngIf="!loading">Ingresar</button>
+    <cce-loading *ngIf="loading"></cce-loading>
   </mat-card-content>
 </mat-card>

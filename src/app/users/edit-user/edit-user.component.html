@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Edición de usuario <i class="close material-icons" (click)="closeDialog()"
+                                           *ngIf="!loading">clear</i></h1>
+<div mat-dialog-content [formGroup]="updateUserForm" class="new-user-form">
+  <mat-form-field>
+    <input matInput formControlName="nombre" placeholder="Nombres" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="apellido" placeholder="Apellidos" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input class="numeric-input" type="number" matInput formControlName="cedula" placeholder="No. de cédula" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select formControlName="estado" placeholder="Estado" [value]="data.user.estado" required>
+      <mat-option [value]="0">Inactivo</mat-option>
+      <mat-option [value]="1">Activo</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select formControlName="tipo_perfil" placeholder="Perfil" [value]="data.user.tipo_perfil" required>
+      <mat-option [value]="1">Administrador</mat-option>
+      <mat-option [value]="2">Aprobador</mat-option>
+      <mat-option [value]="3">Cliente</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="email" placeholder="Email" required>
+    <mat-error *ngIf="updateUserForm.get('email').errors">Digite un email válido</mat-error>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close *ngIf="!loading">Cancelar</button>
+  <button mat-raised-button color="primary" [disabled]="!updateUserForm.valid || loading || updateUserForm.pristine"
+          (click)="saveUser(updateUserForm.value)">{{!loading ? 'Guardar': 'Guardando'}}
+  </button>
+</div>

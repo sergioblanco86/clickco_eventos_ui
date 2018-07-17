@@ -16,9 +16,9 @@
       <a mat-list-item routerLink="users" routerLinkActive="active">
         <mat-icon mat-list-icon>people</mat-icon>
         Usuarios</a>
-      <a mat-list-item routerLink="profiles" routerLinkActive="active">
-        <mat-icon mat-list-icon>supervised_user_circle</mat-icon>
-        Perfiles</a>
+      <a mat-list-item routerLink="places" routerLinkActive="active">
+        <mat-icon mat-list-icon>place</mat-icon>
+        Espacios</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -32,6 +32,13 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>{{title}}</span>
+      <button mat-icon-button [matMenuTriggerFor]="userMenu" class="user-topbar-btn">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item><mat-icon>person</mat-icon><span>Perfil</span></button>
+        <button mat-menu-item (click)="logout();"><mat-icon>exit_to_app</mat-icon><span>Cerrar sesión</span></button>
+      </mat-menu>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

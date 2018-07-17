@@ -21,7 +21,7 @@
 }
 
 .divider {
-  width: 80%;
+  width: 50%;
   display: flex;
   margin: auto;
 }
@@ -34,4 +34,9 @@
       color: #00bb4e;
     }
   }
+}
+
+.user-topbar-btn{
+  position: absolute;
+  right: 12px;
 }

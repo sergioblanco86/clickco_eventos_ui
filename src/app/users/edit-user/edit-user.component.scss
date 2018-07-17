@@ -1,0 +1,29 @@
+.new-user-form {
+  display: flex;
+  flex-direction: column;
+  .numeric-input::-webkit-outer-spin-button, .numeric-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.mat-dialog-title {
+  font-family: 'Varela Round', sans-serif !important;
+  font-size: 24px;
+}
+
+.mat-dialog-actions {
+  justify-content: flex-end;
+}
+
+.close {
+  float: right;
+  margin-top: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: color .2s ease-in-out;
+  &:hover {
+    color: #CF423C;
+  }
+}
+

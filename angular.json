@@ -57,7 +57,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "clickco-eventos:build"
+            "browserTarget": "clickco-eventos:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
