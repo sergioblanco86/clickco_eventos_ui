@@ -21,7 +21,7 @@ import {
   MatSelectModule,
   MatSidenavModule,
   MatSnackBarModule,
-  MatTableModule,
+  MatTableModule, MatTabsModule,
   MatToolbarModule,
   MatTooltipModule
 } from '@angular/material';
@@ -34,6 +34,8 @@ import {LoadingComponent} from './loading/loading.component';
 import {AuthGuardService as AuthGuard} from './auth.guard.service';
 import {JwtModule} from '@auth0/angular-jwt';
 import {PlacesComponent} from './places/places.component';
+import { NewPlaceComponent } from './places/new-place/new-place.component';
+import {IonRangeSliderModule} from 'ng2-ion-range-slider';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -41,7 +43,7 @@ const appRoutes: Routes = [
     path: 'main',
     component: MainComponent,
     children: [
-      {path: '', redirectTo: 'users', pathMatch: 'full'},
+      {path: '', redirectTo: 'places', pathMatch: 'full'},
       {path: 'calendar', component: CalendarComponent, data: {title: 'Calendario'}},
       {path: 'users', component: UsersComponent, data: {title: 'Usuarios'}},
       {path: 'places', component: PlacesComponent, data: {title: 'Espacios'}},
@@ -62,6 +64,7 @@ const appRoutes: Routes = [
     EditUserComponent,
     LoadingComponent,
     PlacesComponent,
+    NewPlaceComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,13 +87,15 @@ const appRoutes: Routes = [
     MatTooltipModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatTabsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
           return localStorage.getItem('clickco_eventos_token');
         }
       }
-    })
+    }),
+    IonRangeSliderModule
   ],
   providers: [
     {

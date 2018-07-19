@@ -55,5 +55,4 @@ export class EditUserComponent implements OnInit {
   closeDialog(data) {
     this.dialogRef.close(data);
   }
-
 }

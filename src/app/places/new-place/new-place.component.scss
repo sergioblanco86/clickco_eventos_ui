@@ -1,0 +1,33 @@
+.new-place-form {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  margin: 20px;
+}
+
+.testing {
+  display: flex;
+  flex-direction: row;
+}
+
+
+.schedule-config-header {
+  text-align: center;
+}
+
+.tab-container {
+  padding: 20px;
+  max-height: 400px;
+  .hours-range-container {
+    margin-top: 24px;
+    ion-range-slider {
+      width: calc(100% - 90px);
+      float: left;
+      margin-right: 10px;
+    }
+    .remove-range, .add-range {
+      margin-top: 4px;
+      color: #3D3D3E;
+    }
+  }
+}

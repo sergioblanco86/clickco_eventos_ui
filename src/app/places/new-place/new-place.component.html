@@ -1,0 +1,46 @@
+<div class="testing">
+  <div class="new-place-form" [formGroup]="newPlace">
+    <mat-form-field>
+      <input matInput formControlName="nombre" placeholder="Nombre" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="ubicacion" placeholder="Ubicación" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Dias disponibles" formControlName="dias_disponibles" multiple required>
+        <mat-option [value]="0">Lunes</mat-option>
+        <mat-option [value]="1">Martes</mat-option>
+        <mat-option [value]="2">Miércoles</mat-option>
+        <mat-option [value]="3">Jueves</mat-option>
+        <mat-option [value]="4">Viernes</mat-option>
+        <mat-option [value]="5">Sábado</mat-option>
+        <mat-option [value]="6">Domingo</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="newPlace.value.dias_disponibles.length">
+      <h4 class="schedule-config-header">Configuración horaria</h4>
+      <mat-tab-group>
+        <mat-tab *ngFor="let day of newPlace.value.dias_disponibles" [label]="weekDaysHours[day].name">
+          <div class="tab-container">
+            <div class="hours-range-container" *ngFor="let range of weekDaysHours[day].hours; let i = index;">
+              <ion-range-slider type="double" min="0" max="23" [from]="range.min" [to]="range.max"
+                                [min_interval]="1" postfix="hrs"
+                                (onFinish)="updateHours(day, i, $event);"></ion-range-slider>
+              <button class="add-range" mat-icon-button matTooltip="Agregar rango" (click)="addRange(day, i)">
+                <mat-icon>add_circle</mat-icon>
+              </button>
+              <button class="remove-range" *ngIf="weekDaysHours[day].hours.length > 1" mat-icon-button
+                      matTooltip="Eliminar rango" (click)="removeRange(day, i)">
+                <mat-icon>remove_circle</mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+  <pre>{{newPlace.value | json}}</pre>
+</div>
+
+
+
