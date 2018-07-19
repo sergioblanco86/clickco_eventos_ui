@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://localhost:1111",
-    "secure": false
+    "target": "https://sctp-eventos-backend.herokuapp.com/",
+    "secure": true
   }
 }
