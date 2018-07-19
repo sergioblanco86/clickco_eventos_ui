@@ -52,7 +52,7 @@
     "protractor": "~5.3.0",
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1",
-    "express": "^4.16.3",
+    "express": "^4.16.3"
   },
   "engines": {
     "node": "9.10.1",
